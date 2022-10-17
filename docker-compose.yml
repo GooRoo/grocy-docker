@@ -13,8 +13,8 @@ services:
     depends_on:
       - backend
     ports:
-      - '127.0.0.1:80:8080'
-      - '127.0.0.1:443:8443'
+      - '${GROCY_HTTP_PORT}:8080'
+      - '${GROCY_HTTPS_PORT}:8443'
     read_only: true
     tmpfs:
       - /tmp
@@ -38,9 +38,7 @@ services:
       - /tmp
     volumes:
       - /var/log/php8
-      - app-db:/var/www/data
-    env_file:
-      - grocy.env
-
-volumes:
-  app-db:
+      - ${GROCY_HOME}/data:/var/www/data
+    dns:
+      - ${GROCY_DNS1}
+      - ${GROCY_DNS2}
