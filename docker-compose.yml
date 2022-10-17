@@ -38,7 +38,7 @@ services:
       - /tmp
     volumes:
       - /var/log/php8
-      - ${GROCY_HOME}/data:/var/www/data
+      - ${GROCY_DATA_VOLUME}/data:/var/www/data
     dns:
       - ${GROCY_DNS1}
       - ${GROCY_DNS2}
